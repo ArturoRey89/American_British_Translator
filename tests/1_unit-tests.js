@@ -8,85 +8,90 @@ suite('Unit Tests', () => {
         test("Translate I ate yogurt for breakfast.", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate I ate yogurt for breakfast."
+                "I ate yogurt for breakfast."
               ),
-              "Translate I ate yoghurt for breakfast."
+              "I ate yoghurt for breakfast."
             );
             done()
         })
         test("Translate Mangoes are my favorite fruit.", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate Mangoes are my favorite fruit."
+                "Mangoes are my favorite fruit."
               ),
-              "Translate Mangoes are my favourite fruit."
+              "Mangoes are my favourite fruit."
             );
             done()
         })
         test("Translate We had a party at my friend's condo.", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate We had a party at my friend's condo."
+                "We had a party at my friend's condo."
               ),
-              "Translate We had a party at my friend's flat."
+              "We had a party at my friend's flat."
             );
             done()
         })
         test("Translate Can you toss this in the trashcan for me?", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate Can you toss this in the trashcan for me?"
+                "Can you toss this in the trashcan for me?"
               ),
-              "Translate Can you toss this in the bin for me?"
+              "Can you toss this in the bin for me?"
             );
             done()
         })
         test("Translate The parking lot was full.", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate The parking lot was full."
+                "The parking lot was full."
               ),
-              "Translate The car park was full."
+              "The car park was full."
             );
             done()
         })
         test("Translate Like a high tech Rube Goldberg machine.", (done) => {
-            assert.equal(translator.americanToBritish(),);
+            assert.equal(
+              translator.americanToBritish(
+                "Like a high tech Rube Goldberg machine."
+              ),
+              "Like a high tech Heath Robinson device."
+            );
             done()
         }) 
         test("Translate To play hooky means to skip class or work.", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate Like a high tech Rube Goldberg machine."
+                "To play hooky means to skip class or work."
               ),
-              "Translate Like a high tech Heath Robinson device."
+              "To bunk off means to skip class or work."
             );
             done()
         }) 
         test("Translate No Mr. Bond, I expect you to die.", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate No Mr. Bond, I expect you to die."
+                "No Mr. Bond, I expect you to die."
               ),
-              "Translate No Mr Bond, I expect you to die."
+              "No Mr Bond, I expect you to die."
             );
             done()
         }) 
         test("Translate Dr. Grosh will see you now.", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate Dr. Grosh will see you now."
+                "Dr. Grosh will see you now."
               ),
-              "Translate Dr Grosh will see you now."
+              "Dr Grosh will see you now."
             );
             done()
         }) 
         test("Translate Lunch is at 12:15 today.", (done) => {
             assert.equal(
               translator.americanToBritish(
-                "Translate Lunch is at 12:15 today."
+                "Lunch is at 12:15 today."
               ),
-              "Translate Lunch is at 12.15 today."
+              "Lunch is at 12.15 today."
             );
             done()
         })
@@ -95,97 +100,93 @@ suite('Unit Tests', () => {
     suite("Translate to American English", () => {
         test("Translate We watched the footie match for a while.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate We watched the footie match for a while."
+              translator.britishToAmerican(
+                "We watched the footie match for a while."
               ),
-              "Translate We watched the soccer match for a while."
+              "We watched the soccer match for a while."
             );
             done()
         })
         test("Translate Paracetamol takes up to an hour to work.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate Paracetamol takes up to an hour to work."
+              translator.britishToAmerican(
+                "Paracetamol takes up to an hour to work."
               ),
-              "Translate Tylenol takes up to an hour to work."
+              "Tylenol takes up to an hour to work."
             );
             done()
         })
         test("Translate First, caramelise the onions.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate First, caramelise the onions."
-              ),
-              "Translate First, caramelize the onions."
+              translator.britishToAmerican("First, caramelise the onions."),
+              "First, caramelize the onions."
             );
             done()
         })
         test("Translate I spent the bank holiday at the funfair.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate I spent the bank holiday at the funfair."
+              translator.britishToAmerican(
+                "I spent the bank holiday at the funfair."
               ),
-              "Translate I spent the public holiday at the carnival."
+              "I spent the public holiday at the carnival."
             );
             done()
         })
         test("Translate I had a bicky then went to the chippy.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate I had a bicky then went to the chippy."
+              translator.britishToAmerican(
+                "I had a bicky then went to the chippy."
               ),
-              "Translate I had a cookie then went to the fish-and-chip shop."
+              "I had a cookie then went to the fish-and-chip shop."
             );
             done()
         })
         test("Translate I've just got bits and bobs in my bum bag.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate I've just got bits and bobs in my bum bag."
+              translator.britishToAmerican(
+                "I've just got bits and bobs in my bum bag."
               ),
-              "Translate I've just got odds and ends in my fanny pack."
+              "I've just got odds and ends in my fanny pack."
             );
             done()
         })
         test("Translate The car boot sale at Boxted Airfield was called off.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate The car boot sale at Boxted Airfield was called off."
+              translator.britishToAmerican(
+                "The car boot sale at Boxted Airfield was called off."
               ),
-              "Translate The swap meet at Boxted Airfield was called off."
+              "The swap meet at Boxted Airfield was called off."
             );
             done()
         })
         test("Translate Have you met Mrs Kalyani?", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate Have you met Mrs Kalyani?"
-              ),
-              "Translate Have you met Mrs. Kalyani?"
+              translator.britishToAmerican("Have you met Mrs Kalyani?"),
+              "Have you met Mrs. Kalyani?"
             );
             done()
         })
         test("Translate Prof Joyner of King's College, London.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate Prof Joyner of King's College, London."
+              translator.britishToAmerican(
+                "Prof Joyner of King's College, London."
               ),
-              "Translate Prof. Joyner of King's College, London."
+              "Prof. Joyner of King's College, London."
             );
             done()
         })
         test("Translate Tea time is usually around 4 or 4.30.", (done) => {
             assert.equal(
-              translator.americanToBritish(
-                "Translate Tea time is usually around 4 or 4.30."
+              translator.britishToAmerican(
+                "Tea time is usually around 4 or 4.30."
               ),
-              "Translate Tea time is usually around 4 or 4:30."
+              "Tea time is usually around 4 or 4:30."
             );
             done()
         })
     })
-    
-    
+
+
     suite("Highlight text", () => {
         test("Highlight translation in Mangoes are my favorite fruit.", (done) => {
             done()
