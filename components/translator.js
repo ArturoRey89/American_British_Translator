@@ -15,18 +15,18 @@ function inverse(obj) {
 
 class Translator {
     americanToBritish(text){
-        let americanTextArray = text.split(/([/"/',.\s])/);
+        let americanTextArray = text.split(/([!?"',.\s])/);
         let editedWord; 
-        let britishTextArray = americanTextArray.flatMap((element,index) => {
+        let britishTextArray = americanTextArray.map((element,index) => {
           //spelling
           if (americanToBritishSpelling[element.toLowerCase()]) {
             editedWord = americanToBritishSpelling[element.toLowerCase()];
-            return editedWord;
+            return '<span class="highlight"> ' + editedWord + ' </span>';
           }
           //original words
           if (americanOnly[element.toLowerCase()]) {
             editedWord = americanOnly[element.toLowerCase()];
-            return editedWord;
+            return '<span class="highlight"> ' + editedWord + " </span>";
           }
           //compound original words
           if (americanTextArray.length > index + 2) {
@@ -37,7 +37,7 @@ class Translator {
             if (americanOnly[compoundWord]) {
               americanTextArray.splice(index + 1, 2);
               editedWord = americanOnly[compoundWord];
-              return editedWord;
+              return '<span class="highlight"> ' + editedWord + " </span>";
             }
           }
           if (americanTextArray.length > index + 4) {
@@ -50,7 +50,7 @@ class Translator {
             if (americanOnly[compoundWord]) {
               americanTextArray.splice(index + 1, 4);
               editedWord = americanOnly[compoundWord];
-              return editedWord;
+              return '<span class="highlight"> ' + editedWord + " </span>";
             }
           }
           //Titles
@@ -63,14 +63,16 @@ class Translator {
               let britishTitle = americanToBritishTitles[punctuatedWord];
               britishTitle =
                 britishTitle.charAt(0).toUpperCase() + britishTitle.slice(1)
-              return britishTitle;
+              return '<span class="highlight"> ' + britishTitle + " </span>";
             }
           }
           //Time format
           let americanTimeFormat = /[0-9]{1,2}:[0-9]{2}/;
           if (americanTimeFormat.test(element)) {
             let [hour, minutes] = element.split(":");
-            return hour + "." + minutes;
+            return (
+              '<span class="highlight"> ' + hour + "." + minutes + " </span>"
+            );
           }
 
           return element;
@@ -79,13 +81,13 @@ class Translator {
     }
 
     britishToAmerican(text){
-        let britishTextArray = text.split(/([/"/',.\s])/);
+        let britishTextArray = text.split(/([!?"',.\s])/);
         let editedWord;
         let americanTextArray = britishTextArray.flatMap((element, index) => {
           //spelling
           if (britishToAmericanSpelling[element.toLowerCase()]) {
             editedWord = britishToAmericanSpelling[element.toLowerCase()];
-            return editedWord;
+            return '<span class="highlight"> ' + editedWord + " </span>";
           }
           //compound original words
           if (britishTextArray.length > index + 4) {
@@ -98,7 +100,7 @@ class Translator {
             if (britishOnly[compoundWord]) {
               britishTextArray.splice(index + 1, 4);
               editedWord = britishOnly[compoundWord];
-              return editedWord;
+              return '<span class="highlight"> ' + editedWord + " </span>";
             }
           }
           if (britishTextArray.length > index + 2) {
@@ -109,20 +111,20 @@ class Translator {
             if (britishOnly[compoundWord]) {
               britishTextArray.splice(index + 1, 2);
               editedWord = britishOnly[compoundWord];
-              return editedWord;
+              return '<span class="highlight"> ' + editedWord + " </span>";
             }
           }
           //original words
           if (britishOnly[element.toLowerCase()]) {
             editedWord = britishOnly[element.toLowerCase()];
-            return editedWord;
+            return '<span class="highlight"> ' + editedWord + " </span>";
           }
           //titles
           if (britishToAmericanTitles[element.toLowerCase()]) {
             let americanTitle = britishToAmericanTitles[element.toLowerCase()];
             americanTitle =
               americanTitle.charAt(0).toUpperCase() + americanTitle.slice(1);
-            return americanTitle;
+            return '<span class="highlight"> ' + americanTitle + " </span>";
           }
           //Time format
           if(britishTextArray.length > index + 2) {
@@ -134,7 +136,9 @@ class Translator {
             if (britishTimeFormat.test(timeString)) {
               let [hour, minutes] = timeString.split(".");
               britishTextArray.splice(index + 1, 2);
-              return hour + ":" + minutes;
+              return (
+                '<span class="highlight"> ' + hour + ":" + minutes + " </span>"
+              );
             }
           }
 
