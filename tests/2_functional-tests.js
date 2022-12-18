@@ -10,31 +10,55 @@ let Translator = require('../components/translator.js');
 suite('Functional Tests', () => {
     suite("Post request to /api/translate", () => {
         test("Translation with text and locale fields:", (done) => {
-            
-            done()
+            chai
+              .request(server)
+              .post("/api/translate")
+              .end((err, res) => {
+                done();
+              });
         }) 
         test("Translation with text and invalid locale field:", (done) => {
-            
-            done()
+            chai
+              .request(server)
+              .post("/api/translate")
+              .end((err, res) => {
+                done();
+              });
         })
         test("Translation with missing text field:", (done) => {
-            
-            done()
+            chai
+              .request(server)
+              .post("/api/translate")
+              .end((err, res) => {
+                done();
+              });
         })
 
         test("Translation with missing locale field:", (done) => {
-            
-            done()
+            chai
+              .request(server)
+              .post("/api/translate")
+              .end((err, res) => {
+                done();
+              });
         })
 
         test("Translation with empty text:", (done) => {
-            
-            done()
+            chai
+              .request(server)
+              .post("/api/translate")
+              .end((err, res) => {
+                done();
+              });
         })
 
         test("Translation with text that needs no translation:", (done) => {
-            
-            done()
+            chai
+              .request(server)
+              .post("/api/translate")
+              .end((err, res) => {
+                done();
+              });
         })
 
     })
