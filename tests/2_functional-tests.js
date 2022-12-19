@@ -13,7 +13,18 @@ suite('Functional Tests', () => {
             chai
               .request(server)
               .post("/api/translate")
+              .send({
+                text: "I ate yogurt for breakfast",
+                locale: "american-to-british",
+              })
               .end((err, res) => {
+                assert.notExists(res.body.error);
+                assert.notEqual(res.body.translation, res.body.text)
+                assert.notEqual(
+                  res.body.translation,
+                  "Everything looks good to me!"
+                );
+                assert.include(res.body.translation, "yoghurt");
                 done();
               });
         }) 
@@ -21,7 +32,12 @@ suite('Functional Tests', () => {
             chai
               .request(server)
               .post("/api/translate")
+              .send({ text: "I ate yoghurt for breakfast", locale: "british-to-british" })
               .end((err, res) => {
+                assert.strictEqual(
+                  res.body.error,
+                  "Invalid value for locale field"
+                );
                 done();
               });
         })
@@ -29,7 +45,11 @@ suite('Functional Tests', () => {
             chai
               .request(server)
               .post("/api/translate")
+              .send({
+                locale: "american-to-british",
+              })
               .end((err, res) => {
+                assert.strictEqual(res.body.error, "Required field(s) missing");
                 done();
               });
         })
@@ -38,7 +58,11 @@ suite('Functional Tests', () => {
             chai
               .request(server)
               .post("/api/translate")
+              .send({
+                locale: "american-to-british",
+              })
               .end((err, res) => {
+                assert.strictEqual(res.body.error, "Required field(s) missing");
                 done();
               });
         })
@@ -47,7 +71,9 @@ suite('Functional Tests', () => {
             chai
               .request(server)
               .post("/api/translate")
+              .send({ text: "", locale: "american-to-british" })
               .end((err, res) => {
+                assert.strictEqual(res.body.error, "No text to translate");
                 done();
               });
         })
@@ -56,7 +82,15 @@ suite('Functional Tests', () => {
             chai
               .request(server)
               .post("/api/translate")
+              .send({
+                text: "I ate yoghurt for breakfast",
+                locale: "american-to-british",
+              })
               .end((err, res) => {
+                assert.strictEqual(
+                  res.body.translation,
+                  "Everything looks good to me!"
+                );
                 done();
               });
         })

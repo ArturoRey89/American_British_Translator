@@ -9,7 +9,7 @@ suite('Unit Tests', () => {
             assert.include(
               translator
                 .americanToBritish("I ate yogurt for breakfast"),
-              "I ate yoghurt for breakfast"
+              "yoghurt"
             );
             done()
         })
